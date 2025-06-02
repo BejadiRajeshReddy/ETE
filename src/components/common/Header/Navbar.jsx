@@ -284,7 +284,7 @@ const NavBar = () => {
       {/* WhatsApp Button */}
       <a
         href="http://wa.me/+919597331928"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-green-500 px-4 py-2 text-white shadow-lg transition-all hover:bg-green-600"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-green-500 md:px-4 md:py-2 text-white shadow-lg transition-all hover:bg-green-600"
         target="_blank"
         rel="noopener noreferrer"
       >

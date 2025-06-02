@@ -5,11 +5,11 @@ import { Dialog } from '@/components/ui/Dialogue'
 
 const programsData = [
     {
-        title: "CCBP 4.0 ACADEMY",
-        subtitle: "Learn like top IITians and achieve high-paid software jobs",
+        title: "Want to Change Your Career Non-IT to IT?",
+        subtitle: "Here's the Best Way to Become a Software Jobs",
         eligibility: [
-            { label: "POST 12TH / INTERMEDIATE", className: "bg-blue-100 text-blue-700" },
-            { label: "1ST, 2ND, 3RD YEAR", className: "bg-cyan-100 text-cyan-700" }
+            { label: "Any Degree", className: "bg-blue-100 text-blue-700" },
+            { label: "Any Working Professionals", className: "bg-cyan-100 text-cyan-700" }
         ],
         batchInfo: {
             starts: "Today",
@@ -21,12 +21,12 @@ const programsData = [
         learnMoreLink: "#"
     },
     {
-        title: "INTENSIVE 3.0",
-        subtitle: "A Proven Program to make you a Software Developer",
+        title: "Finish Your Degree and Become a Software Jobs",
+        subtitle: "A Proven Program to make you a Software Professional",
         eligibility: [
             { label: "GRADUATES", className: "bg-green-100 text-green-700" },
-            { label: "FINAL YEAR", className: "bg-purple-100 text-purple-700" },
-            { label: "ANY BRANCH OR DEGREE", className: "bg-amber-100 text-amber-700" }
+            { label: "FINAL YEAR DEGREE", className: "bg-purple-100 text-purple-700" },
+            // { label: "ANY BRANCH OR DEGREE", className: "bg-amber-100 text-amber-700" }
         ],
         batchInfo: {
             starts: "Today",
@@ -40,7 +40,7 @@ const programsData = [
 ]
 
 
-const Programs = ({subject}) => {
+const Programs = ({ subject }) => {
     const [showForm, setShowForm] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
@@ -48,7 +48,8 @@ const Programs = ({subject}) => {
         email: '',
         qualification: '',
         graduationYear: '',
-        state: ''
+        state: '',
+        course: ''
     })
 
     // const handleSubmit = (e) => {
@@ -139,6 +140,7 @@ const Programs = ({subject}) => {
                                 <label className="block text-sm font-medium text-gray-700">Name</label>
                                 <input
                                     type="text"
+                                    name="name"
                                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
                                     placeholder="Enter Your Name"
                                     value={formData.name}
@@ -157,6 +159,7 @@ const Programs = ({subject}) => {
                                     </span>
                                     <input
                                         type="tel"
+                                        name="phone"
                                         className="block w-full rounded-r-md border border-gray-300 px-3 py-2"
                                         placeholder="Enter Mobile Number"
                                         value={formData.phone}
@@ -171,13 +174,31 @@ const Programs = ({subject}) => {
                                 </label>
                                 <input
                                     type="email"
+                                    name="email"
                                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
                                     placeholder="Enter your Email"
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    
                                     required
                                 />
+                            </div>
+
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">
+                                    Course
+                                </label>
+                                <select
+                                    name="course"
+                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
+                                    value={formData.course}
+                                    onChange={(e) => setFormData({ ...formData, course: e.target.value })}
+                                    required
+                                >
+                                    <option value="">Select Course</option>
+                                    <option value="Data Science Training">Data Science Training</option>
+                                    <option value="Digital Marketing Training">Digital Marketing Training</option>
+                                </select>
                             </div>
 
                             <div>
@@ -185,6 +206,7 @@ const Programs = ({subject}) => {
                                     Highest Qualification
                                 </label>
                                 <select
+                                    name="qualification"
                                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
                                     value={formData.qualification}
                                     onChange={(e) => setFormData({ ...formData, qualification: e.target.value })}
@@ -200,6 +222,8 @@ const Programs = ({subject}) => {
                                 </select>
                             </div>
 
+
+
                             {formData.qualification && (
                                 <>
 
@@ -209,6 +233,7 @@ const Programs = ({subject}) => {
                                             Year of Graduation
                                         </label>
                                         <select
+                                            name="graduationYear"
                                             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
                                             value={formData.graduationYear}
                                             onChange={(e) => setFormData({ ...formData, graduationYear: e.target.value })}
@@ -230,10 +255,11 @@ const Programs = ({subject}) => {
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">
-                                    Native State
+                                    City
                                 </label>
                                 <input
                                     type="text"
+                                    name="city"
                                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
                                     placeholder="Enter your State"
                                     value={formData.state}
