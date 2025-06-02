@@ -39,7 +39,8 @@ const programsData = [
     }
 ]
 
-const Programs = () => {
+
+const Programs = ({subject}) => {
     const [showForm, setShowForm] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
@@ -50,11 +51,11 @@ const Programs = () => {
         state: ''
     })
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(formData)
-        setShowForm(false)
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     console.log(formData)
+    //     setShowForm(true)
+    // }
 
     return (
         <div className="py-16 bg-gray-50">
@@ -128,7 +129,12 @@ const Programs = () => {
                             </button>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="space-y-4">
+                        <form action="https://formsubmit.co/rockyrocky9526@gmail.com"
+                            method="POST"
+                            encType="multipart/form-data"
+                            className="space-y-4">
+                            <input type="hidden" name="_captcha" value="false" />
+                            <input type="hidden" name="_subject" value={subject} />
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Name</label>
                                 <input
@@ -169,6 +175,7 @@ const Programs = () => {
                                     placeholder="Enter your Email"
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                    
                                     required
                                 />
                             </div>
