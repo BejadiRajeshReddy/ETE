@@ -21,7 +21,15 @@ const servicesData = [
     imageSrc: '/images/serviceImage/Data.jpg',
     title: "Data Science Training",
     description:
-      "Master Data Science with Python & Power BI. Learn data analysis, machine learning, and dashboarding through real- time projects.Build in -demand skills and a job - ready portfolio in just weeks."
+      <iframe
+        className="w-full max-w-md h-40 md:h-48 lg:h-56 xl:h-64 2xl:h-70 rounded-lg shadow-md"
+        src="https://www.youtube.com/embed/tHCiX9jHHWY"
+
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
   },
   {
     imageSrc: '/images/serviceImage/smmm.png',
