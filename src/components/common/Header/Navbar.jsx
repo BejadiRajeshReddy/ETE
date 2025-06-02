@@ -280,13 +280,21 @@ const NavBar = () => {
           </div>
         </div>
 
-        {/* WhatsApp Button */}
-        <div className="w-16 h-16 rounded-full fixed mt-20 top-10 right-10 ml-3 border-[1px] border-black">
-          <a href="http://wa.me/+919597331928">
-            <img src="/images/whatsapp/logo.webp" alt="whatsapp" />
-          </a>
-        </div>
       </header>
+      {/* WhatsApp Button */}
+      <a
+        href="http://wa.me/+919597331928"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-green-500 px-4 py-2 text-white shadow-lg transition-all hover:bg-green-600"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="/images/whatsapp/logo.webp"
+          alt="WhatsApp"
+          className="h-10 w-10 rounded-full"
+        />
+        <span className="hidden md:block">Chat with us</span>
+      </a>
     </>
   );
 };
