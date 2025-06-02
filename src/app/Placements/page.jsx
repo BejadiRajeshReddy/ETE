@@ -52,7 +52,7 @@ const Placement = () => {
         <div className="text-gray-800 font-sans">
             {/* Banner section... */}
             {/* Your video and title section (unchanged)... */}
-            <div className="relative bg-center bg-cover bg-[url('https://www.jnncollege.edu.in/wp-content/uploads/2019/03/placementcell.png')] px-4 py-12 md:py-16 lg:py-20">
+            <div className="relative bg-center bg-cover bg-[url('/placementcell.png')] px-4 py-12 md:py-16 lg:py-20">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
                     {/* Title Section */}
                     <div className="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
@@ -157,7 +157,7 @@ const Placement = () => {
             </div>
             <SectionFooter />
         </div>
-        
+
     );
 };
 

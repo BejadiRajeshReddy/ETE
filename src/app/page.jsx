@@ -8,12 +8,17 @@ import Clients from '@/components/common/Home/Clients'
 import About from './Pages/about/page'
 import PlacementBanner from '@/components/common/Home/PlacementBanner'
 import PlacementRecords from '@/components/common/Home/PlacementRecords'
+import Programs from '@/components/common/Home/Programs'
 
 export default function Home() {
   return (
-    <main className='h-[100%] ml-2 mr-2'>
+    <main className='h-[100%]'>
       <section>
         <Banner />
+      </section>
+
+      <section>
+        <Programs />
       </section>
 
       <section>
@@ -33,10 +38,8 @@ export default function Home() {
       </section>
 
       <section>
-        {/* <PlacementBanner />  // Removed this component for Now */}
         <SectionFooter />
       </section>
-
     </main>
   )
 }

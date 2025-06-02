@@ -18,37 +18,37 @@ import {
 
 const servicesData = [
   {
-    imageSrc: '/images/serviceImage/dmark.png',
+    imageSrc: '/images/serviceImage/Data.jpg',
     title: "Data Science Training",
     description:
       "Master Data Science with Python & Power BI. Learn data analysis, machine learning, and dashboarding through real- time projects.Build in -demand skills and a job - ready portfolio in just weeks."
   },
   {
-    imageSrc: '/images/serviceImage/SEO.png',
+    imageSrc: '/images/serviceImage/smmm.png',
     title: 'Digital Marketing Training',
     description:
       'Our Digital Marketing Training focuses on real-time projects to help you master SEO, PPC, Social Media, Content Marketing, and Analytics. Gain practical skills by working on live campaigns, building a portfolio that sets you apart in the job market. Perfect for beginners and professionals, this course includes expert guidance and career support to help you succeed.'
   },
   {
-    imageSrc: '/images/serviceImage/smmm.png',
+    imageSrc: '/images/serviceImage/web__dev.png',
     title: 'Web Development',
     description:
       'Looking for a standout website or web portal? We create high-performance sites using top-notch, secure technologies. Whether you need a Static, Dynamic, or eCommerce site, we’ve got you covered for everything from corporate pages to blogs and online stores.'
   },
   {
-    imageSrc: '/images/serviceImage/UI__UX.png',
+    imageSrc: '/images/serviceImage/dmark.png',
     title: 'Digital Marketing',
     description:
       "Digital is the past, present, and future, and there's no denying it.By living digital, our brand gains three unbeatable advantages greater visibility, marketing opportunities smart budgets & genuine customer connections.Ready to boost your digital presence ? Let s start today."
   },
   {
-    imageSrc: '/images/serviceImage/web__dev.png',
+    imageSrc: '/images/serviceImage/SEO.png',
     title: 'SEO',
     description:
       'People trust search engines just like they trust their doctors. With solid SEO, your brand will stand out and attract visitors naturally. Get more customers and boost your leads without spending a dime on ads. Ready to improve your rankings? Reach out to us today'
   },
   {
-    imageSrc: '/images/serviceImage/app_dev.png',
+    imageSrc: '/images/serviceImage/mobile.png',
     title: 'IOS & Android App Development',
     description:
       'Our iOS Training Program teaches Swift and Xcode through real-time projects. Learn to build apps with Core Data, APIs, and UI/UX design, while working on live projects like eCommerce and social apps. Gain practical skills and create a portfolio to showcase your expertise, with expert guidance and career support to help you succeed in iOS development.'
