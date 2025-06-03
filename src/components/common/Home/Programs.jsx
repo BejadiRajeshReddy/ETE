@@ -375,12 +375,12 @@ const Programs = ({ subject }) => {
                     Designed to transform you into a highly skilled Software Professional
                 </h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <div className="transform scale-90 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                     {programsData.map((program, index) => (
                         <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                             <div className="flex justify-center items-center mb-8">
                                 <img src={program.image} alt={program.title} className="h-8" />
-                                <div className="relative w-48 h-40">
+                                <div className="relative w-40 h-40">
                                     <img
                                         src={program.personImage}
                                         alt="Student"
@@ -418,12 +418,12 @@ const Programs = ({ subject }) => {
                                 >
                                     {program.cta}
                                 </button>
-                                <button
+                                {/* <button
                                     onClick={() => setShowForm(true)}
                                     className="block w-full text-center text-blue-600 font-semibold hover:text-blue-700"
                                 >
                                     Know More
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     ))}
