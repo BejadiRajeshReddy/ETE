@@ -15,28 +15,31 @@ import {
   SelectValue
 } from '@/components/ui/select'
 
-
-const servicesData = [
+const trainingData = [
   {
     imageSrc: '/images/serviceImage/Data.jpg',
     title: "Data Science Training",
     description:
-      <iframe
-        className="w-full max-w-md h-40 md:h-48 lg:h-56 xl:h-64 2xl:h-70 rounded-lg shadow-md"
-        src="https://www.youtube.com/embed/tHCiX9jHHWY"
+      'Master Data Science with Python & Power BI. Learn data analysis, machine learning, and dashboarding through real- time projects.Build in -demand skills and a job - ready portfolio in just weeks..'
+    // <iframe
+    //   className="w-full max-w-md h-40 md:h-48 lg:h-56 xl:h-64 2xl:h-70 rounded-lg shadow-md"
+    //   src="https://www.youtube.com/embed/tHCiX9jHHWY"
 
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+    //   title="YouTube video player"
+    //   frameBorder="0"
+    //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    //   allowFullScreen
+    // ></iframe>
   },
   {
     imageSrc: '/images/serviceImage/smmm.png',
     title: 'Digital Marketing Training',
     description:
-      'Our Digital Marketing Training focuses on real-time projects to help you master SEO, PPC, Social Media, Content Marketing, and Analytics. Gain practical skills by working on live campaigns, building a portfolio that sets you apart in the job market. Perfect for beginners and professionals, this course includes expert guidance and career support to help you succeed.'
+      'Our Digital Marketing Training focuses on real-time projects to help you master SEO, PPC, Social Media, Content Marketing, and Analytics. Gain practical skills by building a portfolio that sets you apart in the job market. Perfect for beginners and professionals, this course includes expert guidance and career support to help you succeed.'
   },
+]
+
+const servicesData = [
   {
     imageSrc: '/images/serviceImage/web__dev.png',
     title: 'Web Development',
@@ -59,7 +62,7 @@ const servicesData = [
     imageSrc: '/images/serviceImage/mobile.png',
     title: 'IOS & Android App Development',
     description:
-      'Our iOS Training Program teaches Swift and Xcode through real-time projects. Learn to build apps with Core Data, APIs, and UI/UX design, while working on live projects like eCommerce and social apps. Gain practical skills and create a portfolio to showcase your expertise, with expert guidance and career support to help you succeed in iOS development.'
+      'Our iOS Training Program teaches Swift and Xcode through real-time projects.Learn to build apps with Core Data, APIs, and UI/UX design, while working on live projects like ECommerce and social apps. Gain practical skills to showcase your expertise, with expert guidance and career support to help you succeed in iOS development.'
   }
 ]
 
@@ -247,56 +250,108 @@ const ServiceSec = () => {
     //     </div>
     //     <GetQuoteForm />
     //   </div>
+    <>
 
-    <div className='container'>
-      <ShadowTitle head={'SERVICES'} />
+      <div className='container'>
+        <ShadowTitle head={'Training'} />
 
-      <h4 className='mb-10 mt-5 text-center text-heading-4 font-semibold'>
-        &quot;ETE Digital in Bangalore offers hands-on training with real-time projects.&quot;
-      </h4>
-      <div className='mb-5 mt-10 flex flex-col justify-between gap-4 md:flex-row'>
-        <div className='grid gap-10 md:grid-cols-3 md:mx-20'>
-          {servicesData?.map((item, index) => (
-            <div
-              key={index}
-              class='card flex w-auto items-center justify-center gap-2'
-            >
-              <div class='card__content relative flex h-full w-full items-center justify-center p-0 text-center font-bold transition-transform duration-1000'>
-                {/* front side */}
-                <Card
-                  key={index}
-                  className='max-w-[850px] bg-background px-4 py-8 transition-shadow'
-                >
-                  <div className='aspect-auto h-[180px] w-full overflow-hidden rounded-full bg-white'>
-                    <img
-                      src={item.imageSrc}
-                      className='block w-full object-cover'
-                    />
-                  </div>
-                  <h5 className='mb-4 mt-6 text-center text-base font-semibold text-text'>
-                    {item.title}
-                  </h5>
-                  {/* <p className='text-justify text-text'>{item.description}</p> */}
-                </Card>
+        <h4 className='mb-10 mt-5 text-center text-heading-4 font-semibold'>
+          &quot;ETE Digital in Bangalore offers hands-on training with real-time projects.&quot;
+        </h4>
+        <div className='mb-5 mt-10 flex flex-col justify-between gap-4 md:flex-row'>
+          <div className='grid gap-10 md:grid-cols-2  justify-items-center mx-auto'>
+            {trainingData?.map((item, index) => (
+              <div
+                key={index}
+                class='card flex w-auto items-center justify-center gap-2'
+              >
+                <div class='card__content relative flex h-full w-full items-center justify-center p-0 text-center font-bold transition-transform duration-1000'>
+                  {/* front side */}
+                  <Card
+                    key={index}
+                    className='max-w-96 bg-background px-4 py-8 transition-shadow'
+                  >
+                    <div className='aspect-auto h-[180px] w-full overflow-hidden rounded-full bg-white'>
+                      <img
+                        src={item.imageSrc}
+                        className='block w-full object-cover'
+                      />
+                    </div>
+                    <h5 className='mb-4 mt-6 text-center text-base font-semibold text-text'>
+                      {item.title}
+                    </h5>
+                    {/* <p className='text-justify text-text'>{item.description}</p> */}
+                  </Card>
 
-                {/* backside */}
+                  {/* backside */}
 
-                <div class='card__back absolute bottom-0 left-0 right-0 top-0 h-auto min-w-full rounded-2xl bg-white px-4 py-2 shadow-xl'>
-                  <div className='flex h-full w-full flex-col items-center justify-center gap-3'>
-                    <p className='text-center text-base font-semibold text-text'>
-                      {item.description}
-                    </p>
+                  <div class='card__back absolute bottom-0 left-0 right-0 top-0 h-auto min-w-full rounded-2xl bg-white px-4 py-2 shadow-xl'>
+                    <div className='flex h-full w-full flex-col items-center justify-center gap-3'>
+                      <p className='text-center text-base font-semibold text-text'>
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* <GetQuoteForm /> */}
         </div>
-        {/* <GetQuoteForm /> */}
+
+      </div>
+      <div className='container'>
+        <ShadowTitle head={'SERVICES'} />
+
+        <h4 className='mb-10 mt-5 text-center text-heading-4 font-semibold'>
+          &quot;ETE Digital is Specialist in Growing Business in the Digital Era.&quot;
+        </h4>
+        <div className='mb-5 mt-10 flex flex-col justify-between gap-4 md:flex-row'>
+          <div className='grid gap-10 md:grid-cols-2 justify-items-center mx-auto'>
+            {servicesData?.map((item, index) => (
+              <div
+                key={index}
+                class='card flex w-auto items-center justify-center gap-2'
+              >
+                <div class='card__content relative flex h-full w-full items-center justify-center p-0 text-center font-bold transition-transform duration-1000'>
+                  {/* front side */}
+                  <Card
+                    key={index}
+                    className='max-w-96 bg-background px-4 py-8 transition-shadow'
+                  >
+                    <div className='aspect-auto h-[180px] w-full overflow-hidden rounded-full bg-white'>
+                      <img
+                        src={item.imageSrc}
+                        className='block w-full object-cover'
+                      />
+                    </div>
+                    <h5 className='mb-4 mt-6 text-center text-base font-semibold text-text'>
+                      {item.title}
+                    </h5>
+                    {/* <p className='text-justify text-text'>{item.description}</p> */}
+                  </Card>
+
+                  {/* backside */}
+
+                  <div class='card__back absolute bottom-0 left-0 right-0 top-0 h-auto min-w-full rounded-2xl bg-white px-4 py-2 shadow-xl'>
+                    <div className='flex h-full w-full flex-col items-center justify-center gap-3'>
+                      <p className='text-center text-base font-semibold text-text'>
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* <GetQuoteForm /> */}
+        </div>
       </div>
 
 
-    </div>
+
+    </>
+
 
   )
 }

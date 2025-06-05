@@ -159,11 +159,11 @@ const Banner = () => {
               <div className='container mx-auto h-full py-6 md:py-10 px-4 md:px-20'>
                 {/* Mobile Layout (Image on top, content below) */}
                 <div className='flex flex-col h-full md:hidden'>
-                  <div className='flex justify-center mb-4 pt-2'>
+                  <div className='flex justify-center mb-4 pt-2 '>
                     <img
                       src={item.image}
                       alt={item.title}
-                      className='w-full h-48 object-contain'
+                      className='w-full h-56 object-contain'
                     />
                   </div>
                   <div className='banner-content text-center px-4'>

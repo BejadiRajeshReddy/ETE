@@ -304,7 +304,7 @@ const programsData = [
             starts: "Today",
             seats: "Limited Seats Available"
         },
-        image: "https://nxtwave-website-media-files.s3.ap-south-1.amazonaws.com/ccbp-website/Academy-blue-logo.svg",
+        image: "/reskill.jpg",
         personImage: "https://nxtwave.imgix.net/ccbp-website/Home/Landingpage/intensive-person-photo.png",
         cta: "Request Callback",
         learnMoreLink: "#"
@@ -313,14 +313,14 @@ const programsData = [
         title: "Finish Your Degree and Become a Software Jobs",
         subtitle: "A Proven Program to make you a Software Professional",
         eligibility: [
-            { label: "GRADUATES", className: "bg-green-100 text-green-700" },
-            { label: "FINAL YEAR DEGREE", className: "bg-purple-100 text-purple-700" },
+            { label: "Graduates", className: "bg-green-100 text-green-700" },
+            { label: "Final Year Degree", className: "bg-purple-100 text-purple-700" },
         ],
         batchInfo: {
             starts: "Today",
             registrations: "Open Now"
         },
-        image: "https://nxtwave-website-media-files.s3.ap-south-1.amazonaws.com/ccbp-website/intensive-3-0-logo.svg",
+        image: "/upskill.jpg",
         personImage: "https://nxtwave.imgix.net/ccbp-website/Home/Landingpage/intensive-person-photo.png",
         cta: "Book a Free Demo",
         learnMoreLink: "#"
@@ -350,7 +350,7 @@ const Programs = ({ subject }) => {
         data.append('_captcha', 'false');
         data.set('_subject', `New Demo Booking from ${formData.name || "User"}`);
 
-        await fetch('https://formsubmit.co/rockyrocky9526@gmail.com', {
+        await fetch('https://formsubmit.co/enquireetedigital@gmail.com', {
             method: 'POST',
             body: data,
         });
@@ -369,9 +369,9 @@ const Programs = ({ subject }) => {
     };
 
     return (
-        <div className="py-16 bg-gray-50">
+        <div className="py-16 bg-white">
             <div className="container mx-auto px-4">
-                <h1 className="text-center text-4xl md:text-5xl font-bold text-[#1a365d] mb-16">
+                <h1 className="text-center text-4xl md:text-5xl font-bold text-[#1a365d] mb-10">
                     Designed to transform you into a highly skilled Software Professional
                 </h1>
 
@@ -379,14 +379,14 @@ const Programs = ({ subject }) => {
                     {programsData.map((program, index) => (
                         <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                             <div className="flex justify-center items-center mb-8">
-                                <img src={program.image} alt={program.title} className="h-8" />
-                                <div className="relative w-40 h-40">
+                                <img src={program.image} alt={program.title} className="h-42" />
+                                {/* <div className="relative w-40 h-40">
                                     <img
                                         src={program.personImage}
                                         alt="Student"
                                         className="absolute top-0 right-0 h-40 w-full object-contain"
                                     />
-                                </div>
+                                </div> */}
                             </div>
 
                             <div className="flex flex-wrap gap-2 mb-4">
@@ -432,7 +432,7 @@ const Programs = ({ subject }) => {
 
             <Dialog open={showForm} onOpenChange={setShowForm}>
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
-                    <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
+                    <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[87vh] overflow-y-auto">
                         <div>
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-xl font-bold">Book a Live Demo For Free!</h2>
