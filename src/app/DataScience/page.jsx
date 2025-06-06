@@ -58,19 +58,21 @@ const FormPage = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#F0EBF8] to-white py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-[#673AB7] to-[#9C27B0] text-white py-6 px-8 rounded-t-xl">
-                    <h1 className="text-3xl font-bold">Application form for Data Science Training</h1>
-                    <p className="text-sm mt-2 opacity-90">Complete all required fields marked with an asterisk (*)</p>
+                <div className="bg-blue-900 text-white py-6 px-8 rounded-t-xl">
+                    <div className="flex items-center justify-center mb-4">
+                        <img src="/ETE_Final.png" alt="" className='h-20' />
+                    </div>
+                    <h1 className="text-3xl text-center font-bold">Application form for Data Science Training</h1>
+                    <p className="text-sm mt-2 text-center opacity-90">Complete all required fields marked with an asterisk (*)</p>
                 </div>
 
                 <div className="p-8">
                     <div className="mb-8 bg-gray-50 p-6 rounded-lg border border-gray-100">
-                        <h2 className="text-xl font-semibold text-gray-800 mb-4">ETE DIGITAL PVT LTD</h2>
-                        <div className="space-y-1 text-gray-600">
+                        <h2 className="text-2xl text-center font-semibold text-gray-800 mb-4">ETE DIGITAL PVT LTD</h2>
+                        <div className="space-y-1 text-center text-gray-600">
                             <p>112/4, 1st Floor, BMR Landmark, HSR Layout, Mangammanapalya Main Rd, 7th Sector,</p>
                             <p>Bommanahalli, Bangalore, Karnataka 560068</p>
-                            <p>Mail: <a href="mailto:admin@etedigital.com" className="text-[#673AB7] hover:underline">admin@etedigital.com</a></p>
-                            <p>Website: <a href="http://www.etedigital.com" target="_blank" rel="noopener noreferrer" className="text-[#673AB7] hover:underline">www.etedigital.com</a></p>
+                            <p>Mail: <a href="mailto:admin@etedigital.com" className="text-[#673AB7] hover:underline">admin@etedigital.com</a>  |    Website: <a href="http://www.etedigital.com" target="_blank" className="text-[#673AB7] hover:underline">www.etedigital.com</a></p>
                         </div>
                     </div>
 

@@ -1,5 +1,5 @@
 import './globals.css'
-import Navbar from '../components/common/Header/Navbar'
+import ClientNavbar from '../components/common/Header/ClientNavbar'
 import Footer from '@/components/common/Footer/page'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
@@ -18,8 +18,6 @@ export const metadata = {
   title: 'ETE'
 }
 
-
-
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className={inter.className}>
@@ -28,7 +26,7 @@ export default function RootLayout({ children }) {
         <GoogleTagManager gtmId='GTM-NQKM3WM7' />
       </head>
       <body className='font-sans antialiased'>
-        <Navbar />
+        <ClientNavbar />
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQKM3WM7"
             height="0" width="0" style={{ display: "none", visibility: "hidden" }}>
