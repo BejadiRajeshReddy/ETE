@@ -47,7 +47,7 @@ const FormPage = () => {
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
             // Google Apps Script Web App URL - Replace with your actual URL
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/1HZfqNEK-2MqCNnL_iR9x8mypzHoTekRunCbjgC6D4z4NdZC42IfHdbBf/exec';
             
             const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
