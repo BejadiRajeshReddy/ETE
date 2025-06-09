@@ -46,21 +46,28 @@ const FormPage = () => {
 
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
-            // Google Apps Script Web App URL - Replace with your actual URL
+            // Using a more reliable Google Apps Script Web App URL
+            // Replace this with your actual deployed Web App URL
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytYOxYc1VbBC3ELt0COh2mIlhzrzhk_PYHUQm7GcPwolkN99tzpx_BAN1XyzPGGhi4/exec';
             
+            // Create form data for submission
+            const submitData = new FormData();
+            
+            // Add all form fields
+            Object.keys(formDataToSubmit).forEach(key => {
+                if (formDataToSubmit[key] !== null && formDataToSubmit[key] !== undefined) {
+                    submitData.append(key, formDataToSubmit[key]);
+                }
+            });
+
             const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    ...formDataToSubmit,
-                    timestamp: new Date().toISOString(),
-                    formType: 'Data Science Training Application'
-                })
+                body: submitData
             });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
             return { success: true };
         } catch (error) {
@@ -76,6 +83,8 @@ const FormPage = () => {
         try {
             // Prepare form data for submission
             const submissionData = {
+                formType: 'Data Science Training Application',
+                timestamp: new Date().toISOString(),
                 name: formData.name,
                 email: formData.email,
                 presentAddress: formData.presentAddress,
@@ -88,14 +97,14 @@ const FormPage = () => {
                 postGraduationDetails: formData.postGraduationDetails,
                 workExperience: formData.workExperience,
                 date: formData.date,
-                photoFileName: formData.photo ? formData.photo.name : '',
-                resumeFileName: formData.resume ? formData.resume.name : ''
+                photoFileName: formData.photo ? formData.photo.name : 'No file uploaded',
+                resumeFileName: formData.resume ? formData.resume.name : 'No file uploaded'
             };
 
             // Submit to Google Sheets
             await submitToGoogleSheets(submissionData);
             
-            toast.success('Application submitted successfully!');
+            toast.success('Application submitted successfully! Data saved to Google Sheets.');
             resetForm();
         } catch (error) {
             toast.error('Failed to submit application. Please try again.');
