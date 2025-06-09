@@ -48,7 +48,7 @@ const FormPage = () => {
         try {
             // Using a more reliable Google Apps Script Web App URL
             // Replace this with your actual deployed Web App URL
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytYOxYc1VbBC3ELt0COh2mIlhzrzhk_PYHUQm7GcPwolkN99tzpx_BAN1XyzPGGhi4/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-wvNX02jHc4tHA6yNRtwMStAMPgxnEYOet-_pbY31jD_AAypgfnANGUrBkA9IF0Y/exec';
             
             // Create form data for submission
             const submitData = new FormData();
