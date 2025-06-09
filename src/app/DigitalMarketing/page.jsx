@@ -46,21 +46,28 @@ const FormPage = () => {
 
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
-            // Google Apps Script Web App URL - Replace with your actual URL
+            // Using form submission approach to bypass CORS
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxyY9aQabZ5znncuvyExvT0cCcT8PTeGQ2SdEuNsgiy5wn2vjAj9M4_PJ_3sGHOGxCKeg/exec';
             
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    ...formDataToSubmit,
-                    timestamp: new Date().toISOString(),
-                    formType: 'Digital Marketing Training Application'
-                })
+            // Create a form element and submit it
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = GOOGLE_SCRIPT_URL;
+            form.target = '_blank'; // Open in new tab to avoid navigation
+            form.style.display = 'none';
+
+            // Add all form fields as hidden inputs
+            Object.keys(formDataToSubmit).forEach(key => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = formDataToSubmit[key] || '';
+                form.appendChild(input);
             });
+
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
 
             return { success: true };
         } catch (error) {
@@ -76,6 +83,8 @@ const FormPage = () => {
         try {
             // Prepare form data for submission
             const submissionData = {
+                formType: 'Digital Marketing Training Application',
+                timestamp: new Date().toISOString(),
                 name: formData.name,
                 email: formData.email,
                 presentAddress: formData.presentAddress,
@@ -88,14 +97,14 @@ const FormPage = () => {
                 postGraduationDetails: formData.postGraduationDetails,
                 workExperience: formData.workExperience,
                 date: formData.date,
-                photoFileName: formData.photo ? formData.photo.name : '',
-                resumeFileName: formData.resume ? formData.resume.name : ''
+                photoFileName: formData.photo ? formData.photo.name : 'No file uploaded',
+                resumeFileName: formData.resume ? formData.resume.name : 'No file uploaded'
             };
 
             // Submit to Google Sheets
             await submitToGoogleSheets(submissionData);
             
-            toast.success('Application submitted successfully!');
+            toast.success('Application submitted successfully! Data saved to Google Sheets.');
             resetForm();
         } catch (error) {
             toast.error('Failed to submit application. Please try again.');
