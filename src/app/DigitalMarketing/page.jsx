@@ -25,6 +25,7 @@ const FormPage = () => {
     };
 
     const [formData, setFormData] = useState(initialFormState);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
@@ -43,15 +44,64 @@ const FormPage = () => {
         });
     };
 
+    const submitToGoogleSheets = async (formDataToSubmit) => {
+        try {
+            // Google Apps Script Web App URL - Replace with your actual URL
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+            
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formDataToSubmit,
+                    timestamp: new Date().toISOString(),
+                    formType: 'Digital Marketing Training Application'
+                })
+            });
+
+            return { success: true };
+        } catch (error) {
+            console.error('Error submitting to Google Sheets:', error);
+            throw error;
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            // Your form submission logic here
+        setIsSubmitting(true);
 
+        try {
+            // Prepare form data for submission
+            const submissionData = {
+                name: formData.name,
+                email: formData.email,
+                presentAddress: formData.presentAddress,
+                permanentAddress: formData.permanentAddress,
+                mobileNumber: formData.mobileNumber,
+                parentsMobileNumber: formData.parentsMobileNumber,
+                schoolDetails: formData.schoolDetails,
+                pucDetails: formData.pucDetails,
+                graduationDetails: formData.graduationDetails,
+                postGraduationDetails: formData.postGraduationDetails,
+                workExperience: formData.workExperience,
+                date: formData.date,
+                photoFileName: formData.photo ? formData.photo.name : '',
+                resumeFileName: formData.resume ? formData.resume.name : ''
+            };
+
+            // Submit to Google Sheets
+            await submitToGoogleSheets(submissionData);
+            
             toast.success('Application submitted successfully!');
             resetForm();
         } catch (error) {
-            toast.error('Failed to submit application');
+            toast.error('Failed to submit application. Please try again.');
+            console.error('Submission error:', error);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -304,14 +354,16 @@ const FormPage = () => {
                         <div className="flex justify-between pt-6">
                             <Button
                                 type="submit"
-                                className="px-8 py-3 bg-gradient-to-r from-[#673AB7] to-[#9C27B0] text-white rounded-lg hover:opacity-90 transition-opacity"
+                                disabled={isSubmitting}
+                                className="px-8 py-3 bg-gradient-to-r from-[#673AB7] to-[#9C27B0] text-white rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
                             >
-                                Submit Application
+                                {isSubmitting ? 'Submitting...' : 'Submit Application'}
                             </Button>
                             <Button
                                 type="button"
                                 onClick={resetForm}
-                                className="px-8 py-3 bg-transparent text-[#673AB7] border border-[#673AB7] rounded-lg hover:bg-gray-50"
+                                disabled={isSubmitting}
+                                className="px-8 py-3 bg-transparent text-[#673AB7] border border-[#673AB7] rounded-lg hover:bg-gray-50 disabled:opacity-50"
                             >
                                 Clear Form
                             </Button>
