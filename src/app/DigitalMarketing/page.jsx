@@ -47,7 +47,7 @@ const FormPage = () => {
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
             // Using form submission approach to bypass CORS
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxyY9aQabZ5znncuvyExvT0cCcT8PTeGQ2SdEuNsgiy5wn2vjAj9M4_PJ_3sGHOGxCKeg/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxa6PqT9KzGnimhumb8RF_uqD7vS4k-R-vI46bzlo02NflZ_0koseqAsD4g8JMdCotClw/exec';
             
             // Create a form element and submit it
             const form = document.createElement('form');
