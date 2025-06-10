@@ -46,7 +46,7 @@ const FormPage = () => {
 
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfvPXof3hn4vaVpMnqRwk9d5AvvGQiR8bOoeLWCYJpnBLphZlrvdNAguvpFzsc_aofnw/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbziaeU9IshJXLw9dbSOBLeKBygRvTm5TlfGfQqhzvy5KTjlnVNnBljw_KdPWO2Ja5VNpg/exec';
             
             // Create FormData for file uploads
             const formDataObj = new FormData();
