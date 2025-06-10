@@ -159,7 +159,7 @@ const FormPage = () => {
                         <div className="space-y-1 text-center text-gray-600">
                             <p>112/4, 1st Floor, BMR Landmark, HSR Layout, Mangammanapalya Main Rd, 7th Sector,</p>
                             <p>Bommanahalli, Bangalore, Karnataka 560068</p>
-                            <p>Mail: <a href="mailto:admin@etedigital.com" className="text-[#673AB7] hover:underline">admin@etedigital.com</a>  |    Website: <a href="http://www.etedigital.com" target="_blank" className="text-[#673AB7] hover:underline">www.etedigital.com</a></p>
+                            <p>Mail: <a href="mailto:admin@etedigital.com" className="text-[#673AB7] hover:underline">admin@etedigital.com</a>  |    Website: <a href="http://www.etedigital.com" target=\"_blank" className="text-[#673AB7] hover:underline">www.etedigital.com</a></p>
                         </div>
                     </div>
 
