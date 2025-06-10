@@ -66,47 +66,12 @@ const FormPage = () => {
                 formDataObj.append('resume', formData.resume);
             }
 
-            // Create a form element and submit it
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = GOOGLE_SCRIPT_URL;
-            form.target = '_blank';
-            form.style.display = 'none';
-            form.enctype = 'multipart/form-data';
-
-            // Add all form fields as hidden inputs (except files)
-            Object.keys(formDataToSubmit).forEach(key => {
-                if (key !== 'photo' && key !== 'resume') {
-                    const input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = key;
-                    input.value = formDataToSubmit[key] || '';
-                    form.appendChild(input);
-                }
+            // Use fetch API to submit the form data
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: formDataObj,
+                mode: 'no-cors' // Required for Google Apps Script
             });
-
-            // Add file inputs
-            if (formData.photo) {
-                const photoInput = document.createElement('input');
-                photoInput.type = 'file';
-                photoInput.name = 'photo';
-                photoInput.files = formData.photo;
-                photoInput.style.display = 'none';
-                form.appendChild(photoInput);
-            }
-
-            if (formData.resume) {
-                const resumeInput = document.createElement('input');
-                resumeInput.type = 'file';
-                resumeInput.name = 'resume';
-                resumeInput.files = formData.resume;
-                resumeInput.style.display = 'none';
-                form.appendChild(resumeInput);
-            }
-
-            document.body.appendChild(form);
-            form.submit();
-            document.body.removeChild(form);
 
             return { success: true };
         } catch (error) {

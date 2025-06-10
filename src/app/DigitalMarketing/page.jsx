@@ -48,47 +48,30 @@ const FormPage = () => {
         try {
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfvPXof3hn4vaVpMnqRwk9d5AvvGQiR8bOoeLWCYJpnBLphZlrvdNAguvpFzsc_aofnw/exec';
             
-            // Create a form element and submit it
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = GOOGLE_SCRIPT_URL;
-            form.target = '_blank';
-            form.style.display = 'none';
-            form.enctype = 'multipart/form-data';
-
-            // Add all form fields as hidden inputs (except files)
+            // Create FormData for file uploads
+            const formDataObj = new FormData();
+            
+            // Add all text fields
             Object.keys(formDataToSubmit).forEach(key => {
                 if (key !== 'photo' && key !== 'resume') {
-                    const input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = key;
-                    input.value = formDataToSubmit[key] || '';
-                    form.appendChild(input);
+                    formDataObj.append(key, formDataToSubmit[key] || '');
                 }
             });
-
-            // Add file inputs
+            
+            // Add files if they exist
             if (formData.photo) {
-                const photoInput = document.createElement('input');
-                photoInput.type = 'file';
-                photoInput.name = 'photo';
-                photoInput.files = formData.photo;
-                photoInput.style.display = 'none';
-                form.appendChild(photoInput);
+                formDataObj.append('photo', formData.photo);
             }
-
             if (formData.resume) {
-                const resumeInput = document.createElement('input');
-                resumeInput.type = 'file';
-                resumeInput.name = 'resume';
-                resumeInput.files = formData.resume;
-                resumeInput.style.display = 'none';
-                form.appendChild(resumeInput);
+                formDataObj.append('resume', formData.resume);
             }
 
-            document.body.appendChild(form);
-            form.submit();
-            document.body.removeChild(form);
+            // Use fetch API to submit the form data
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: formDataObj,
+                mode: 'no-cors' // Required for Google Apps Script
+            });
 
             return { success: true };
         } catch (error) {
