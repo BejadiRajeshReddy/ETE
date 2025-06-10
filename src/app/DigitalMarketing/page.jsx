@@ -46,7 +46,7 @@ const FormPage = () => {
 
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxa6PqT9KzGnimhumb8RF_uqD7vS4k-R-vI46bzlo02NflZ_0koseqAsD4g8JMdCotClw/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfvPXof3hn4vaVpMnqRwk9d5AvvGQiR8bOoeLWCYJpnBLphZlrvdNAguvpFzsc_aofnw/exec';
             
             // Create a form element and submit it
             const form = document.createElement('form');
