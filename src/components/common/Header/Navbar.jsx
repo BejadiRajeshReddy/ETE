@@ -68,7 +68,7 @@ const NavBar = () => {
                 setOpen={setTrainingDropdownOpen}
               />
 
-              {/* Placement Link */}
+              {/* Placement Link - Updated path */}
               <Link
                 href="/Placements"
                 className="group relative flex cursor-pointer flex-col items-center justify-start px-4 py-2"
@@ -80,12 +80,12 @@ const NavBar = () => {
                 <div className="absolute bottom-0 left-0 w-0 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 duration-300 ease-out group-hover:w-full group-hover:p-0.5 group-hover:transition-[width]"></div>
               </Link>
 
-              {/* Contact Link */}
+              {/* Contact Link - Updated path */}
               <Link
                 href="/Contact"
                 className="group relative flex cursor-pointer flex-col items-center justify-start px-4 py-2"
               >
-                <span className={`text-[17px] font-semibold capitalize hover:text-primary ${currentPath === "/Contact" ? "text-primary" : "text-text"
+                <span className={`text-[17px] font-semibold capitalize hover:text-primary ${currentPath === "/contact" ? "text-primary" : "text-text"
                   }`}>
                   Contact
                 </span>
@@ -93,7 +93,7 @@ const NavBar = () => {
               </Link>
             </div>
 
-            {/* Mobile Navigation */}
+            {/* Mobile Navigation - Updated paths */}
             <div className="md:hidden">
               <MobileNav
                 links={[
@@ -101,17 +101,19 @@ const NavBar = () => {
                   {
                     path: "",
                     name: "service",
+                    isPopup: "service",
                     children: [
-                      { path: "/Pages/services/digital-marketing", name: "Digital Marketing" },
-                      { path: "/Pages/services/web-development", name: "Web Development" }
+                      { path: "/services/digital-marketing", name: "Digital Marketing" },
+                      { path: "/services/web-development", name: "Web Development" }
                     ]
                   },
                   {
                     path: "",
                     name: "Training",
+                    isPopup: "training",
                     children: [
-                      { path: "/Pages/Training/data-science-training", name: "Data Science Training" },
-                      { path: "/Pages/Training/digital-marketing-training", name: "Digital Marketing Training" }
+                      { path: "/training/data-science", name: "Data Science Training" },
+                      { path: "/training/digital-marketing", name: "Digital Marketing Training" }
                     ]
                   },
                   { path: "/Placements", name: "Placement" },
@@ -153,3 +155,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
