@@ -55,7 +55,7 @@ const FormPage = () => {
 
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwIH9h_1HojK8fUeXEHZfrG0ABqneUrhDCsHWuztSj1fwcrOK6Nkh4aXiNeWtgVhHtMgg/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbziaeU9IshJXLw9dbSOBLeKBygRvTm5TlfGfQqhzvy5KTjlnVNnBljw_KdPWO2Ja5VNpg/exec';
             
             // Convert files to base64 if they exist
             let photoData = null;
@@ -164,7 +164,7 @@ const FormPage = () => {
                         <div className="space-y-1 text-center text-gray-600">
                             <p>112/4, 1st Floor, BMR Landmark, HSR Layout, Mangammanapalya Main Rd, 7th Sector,</p>
                             <p>Bommanahalli, Bangalore, Karnataka 560068</p>
-                            <p>Mail: <a href="mailto:admin@etedigital.com" className="text-[#673AB7] hover:underline">admin@etedigital.com</a>  |    Website: <a href="http://www.etedigital.com" target="_blank" className="text-[#673AB7] hover:underline">www.etedigital.com</a></p>
+                            <p>Mail: <a href="mailto:admin@etedigital.com" className="text-[#673AB7] hover:underline">admin@etedigital.com</a>  |    Website: <a href="http://www.etedigital.com" target=\"_blank" className="text-[#673AB7] hover:underline">www.etedigital.com</a></p>
                         </div>
                     </div>
 
