@@ -84,23 +84,15 @@ const FormPage = () => {
                 resumeFile: resumeData
             };
 
-            // Create a form and submit it (this approach works better with Google Apps Script)
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = GOOGLE_SCRIPT_URL;
-            form.target = '_blank';
-            form.style.display = 'none';
-
-            // Add all data as a single JSON field
-            const dataInput = document.createElement('input');
-            dataInput.type = 'hidden';
-            dataInput.name = 'data';
-            dataInput.value = JSON.stringify(completeData);
-            form.appendChild(dataInput);
-
-            document.body.appendChild(form);
-            form.submit();
-            document.body.removeChild(form);
+            // Use fetch with no-cors mode to prevent new tab
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(completeData)
+            });
 
             return { success: true };
         } catch (error) {
@@ -137,8 +129,11 @@ const FormPage = () => {
             // Submit to Google Sheets with files
             await submitToGoogleSheets(submissionData);
             
-            toast.success('Application submitted successfully! Files uploaded to Google Drive.');
-            resetForm();
+            // Add a slight delay before showing success message
+            setTimeout(() => {
+                toast.success('Application submitted successfully! Files uploaded to Google Drive.');
+                resetForm();
+            }, 1000);
         } catch (error) {
             toast.error('Failed to submit application. Please try again.');
             console.error('Submission error:', error);
