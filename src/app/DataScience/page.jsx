@@ -44,34 +44,63 @@ const FormPage = () => {
         });
     };
 
+    const convertFileToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+    };
+
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbziaeU9IshJXLw9dbSOBLeKBygRvTm5TlfGfQqhzvy5KTjlnVNnBljw_KdPWO2Ja5VNpg/exec';
             
-            // Create FormData for file uploads
-            const formDataObj = new FormData();
-            
-            // Add all text fields
-            Object.keys(formDataToSubmit).forEach(key => {
-                if (key !== 'photo' && key !== 'resume') {
-                    formDataObj.append(key, formDataToSubmit[key] || '');
-                }
-            });
-            
-            // Add files if they exist
+            // Convert files to base64 if they exist
+            let photoData = null;
+            let resumeData = null;
+
             if (formData.photo) {
-                formDataObj.append('photo', formData.photo);
-            }
-            if (formData.resume) {
-                formDataObj.append('resume', formData.resume);
+                photoData = {
+                    name: formData.photo.name,
+                    type: formData.photo.type,
+                    data: await convertFileToBase64(formData.photo)
+                };
             }
 
-            // Use fetch API to submit the form data
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                body: formDataObj,
-                mode: 'no-cors' // Required for Google Apps Script
-            });
+            if (formData.resume) {
+                resumeData = {
+                    name: formData.resume.name,
+                    type: formData.resume.type,
+                    data: await convertFileToBase64(formData.resume)
+                };
+            }
+
+            // Prepare the complete data object
+            const completeData = {
+                ...formDataToSubmit,
+                photoFile: photoData,
+                resumeFile: resumeData
+            };
+
+            // Create a form and submit it (this approach works better with Google Apps Script)
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = GOOGLE_SCRIPT_URL;
+            form.target = '_blank';
+            form.style.display = 'none';
+
+            // Add all data as a single JSON field
+            const dataInput = document.createElement('input');
+            dataInput.type = 'hidden';
+            dataInput.name = 'data';
+            dataInput.value = JSON.stringify(completeData);
+            form.appendChild(dataInput);
+
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
 
             return { success: true };
         } catch (error) {
