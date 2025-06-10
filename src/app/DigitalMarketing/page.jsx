@@ -46,24 +46,45 @@ const FormPage = () => {
 
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
-            // Using form submission approach to bypass CORS
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxa6PqT9KzGnimhumb8RF_uqD7vS4k-R-vI46bzlo02NflZ_0koseqAsD4g8JMdCotClw/exec';
             
             // Create a form element and submit it
             const form = document.createElement('form');
             form.method = 'POST';
             form.action = GOOGLE_SCRIPT_URL;
-            form.target = '_blank'; // Open in new tab to avoid navigation
+            form.target = '_blank';
             form.style.display = 'none';
+            form.enctype = 'multipart/form-data';
 
-            // Add all form fields as hidden inputs
+            // Add all form fields as hidden inputs (except files)
             Object.keys(formDataToSubmit).forEach(key => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = key;
-                input.value = formDataToSubmit[key] || '';
-                form.appendChild(input);
+                if (key !== 'photo' && key !== 'resume') {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = formDataToSubmit[key] || '';
+                    form.appendChild(input);
+                }
             });
+
+            // Add file inputs
+            if (formData.photo) {
+                const photoInput = document.createElement('input');
+                photoInput.type = 'file';
+                photoInput.name = 'photo';
+                photoInput.files = formData.photo;
+                photoInput.style.display = 'none';
+                form.appendChild(photoInput);
+            }
+
+            if (formData.resume) {
+                const resumeInput = document.createElement('input');
+                resumeInput.type = 'file';
+                resumeInput.name = 'resume';
+                resumeInput.files = formData.resume;
+                resumeInput.style.display = 'none';
+                form.appendChild(resumeInput);
+            }
 
             document.body.appendChild(form);
             form.submit();
@@ -101,10 +122,10 @@ const FormPage = () => {
                 resumeFileName: formData.resume ? formData.resume.name : 'No file uploaded'
             };
 
-            // Submit to Google Sheets
+            // Submit to Google Sheets with files
             await submitToGoogleSheets(submissionData);
             
-            toast.success('Application submitted successfully! Data saved to Google Sheets.');
+            toast.success('Application submitted successfully! Files uploaded to Google Drive.');
             resetForm();
         } catch (error) {
             toast.error('Failed to submit application. Please try again.');
