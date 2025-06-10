@@ -55,7 +55,7 @@ const FormPage = () => {
 
     const submitToGoogleSheets = async (formDataToSubmit) => {
         try {
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbziaeU9IshJXLw9dbSOBLeKBygRvTm5TlfGfQqhzvy5KTjlnVNnBljw_KdPWO2Ja5VNpg/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKmTp99eBNAbCuTN6P1LHabOeoANey10H9WTDwXEZ1xLtRC7-nn0ab4EH8YUb_e_ox7w/exec';
             
             // Convert files to base64 if they exist
             let photoData = null;
